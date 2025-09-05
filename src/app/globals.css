@@ -82,11 +82,27 @@ a {
   padding: 0;
 }
 
+/* Applied after leaving the very top; ensures contrast on light sections */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
 .navbar .container {
     height: 100%; 
     display: flex;
     justify-content: center;
     align-items: center;
+  position: relative; /* allow absolute-positioned hamburger */
+}
+
+/* Place the hamburger button at the top-right of the navbar */
+.navbar-header {
+  position: absolute;
+  top: 50%;
+  right: 1rem; /* top-right corner */
+  transform: translateY(-50%);
 }
 
 /* Hamburger Icon Styles (Sleek, Minimalist) */
@@ -246,6 +262,24 @@ a {
   margin: 1rem auto 0;
   border-radius: 2px;
   background: linear-gradient(90deg, var(--color-accent-orange), var(--color-accent-sand));
+}
+
+/* Mobile: make navbar smaller and transparent */
+@media (max-width: 768px) {
+  .navbar {
+    height: 56px;
+    background-color: transparent;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+  .navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+  .navbar-header { right: 0.75rem; }
+  .section { scroll-margin-top: 56px; }
+  .hero-section { min-height: calc(100dvh - 56px); }
 }
 
 .hero-emphasis {

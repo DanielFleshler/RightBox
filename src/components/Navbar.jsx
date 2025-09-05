@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-	const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
 	const toggleMenu = () => setIsOpen((v) => !v);
 
-	// Close on Escape and lock body scroll when menu is open
-	useEffect(() => {
+    // Close on Escape and lock body scroll when menu is open
+    useEffect(() => {
 		const onKeyDown = (e) => {
 			if (e.key === "Escape") setIsOpen(false);
 		};
@@ -17,10 +18,18 @@ export default function Navbar() {
 			document.removeEventListener("keydown", onKeyDown);
 			document.body.style.overflow = "";
 		};
-	}, [isOpen]);
+    }, [isOpen]);
 
-	return (
-		<header className="navbar">
+    // Toggle solid background after leaving the top/hero
+    useEffect(() => {
+        const onScroll = () => setIsScrolled(window.scrollY > 8);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    return (
+        <header className={`navbar ${isScrolled ? "scrolled" : ""}`}>
 			<div className="container">
 				<div className="navbar-header">
 				<button
