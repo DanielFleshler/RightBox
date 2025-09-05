@@ -625,25 +625,35 @@ h3 {
   10. MOBILE-SPECIFIC STYLES
 */
 @media (max-width: 768px) {
+  .hero-features {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-feature {
+    flex-direction: row;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
     .navbar {
         display: none;
     }
 
-    .hamburger {
-        display: block;
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 1002;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 8px;
-        border-radius: 5px;
-        backdrop-filter: blur(5px);
-    }
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1002;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 8px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+  }
     .hamburger-icon,
     .hamburger-icon::before,
     .hamburger-icon::after {
-        background-color: var(--color-light-text);
+        background-color: var(--color-dark-slate);
     }
 
     .navbar-nav {

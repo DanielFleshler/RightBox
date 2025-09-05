@@ -2,85 +2,97 @@
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false);
+	const [activeSection, setActiveSection] = useState("home");
 
-	const toggleMenu = () => setIsOpen((v) => !v);
-
-    // Close on Escape and lock body scroll when menu is open
-    useEffect(() => {
-		const onKeyDown = (e) => {
-			if (e.key === "Escape") setIsOpen(false);
-		};
-		document.addEventListener("keydown", onKeyDown);
-		document.body.style.overflow = isOpen ? "hidden" : "";
+	// Lock body scroll when menu is open
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
+		}
 		return () => {
-			document.removeEventListener("keydown", onKeyDown);
 			document.body.style.overflow = "";
 		};
-    }, [isOpen]);
+	}, [isOpen]);
 
-    // Toggle solid background after leaving the top/hero
-    useEffect(() => {
-        const onScroll = () => setIsScrolled(window.scrollY > 8);
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+	const navLinks = [
+		{ id: "home", label: "בית" },
+		{ id: "carousel", label: "מי אנחנו" },
+		{ id: "gallery", label: "גלריה" },
+		{ id: "products", label: "מוצרים" },
+		{ id: "contact", label: "צור קשר" },
+	];
 
-    return (
-        <header className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-			<div className="container">
-				<div className="navbar-header">
-				<button
-						className="hamburger"
-						onClick={toggleMenu}
-						aria-label="Toggle navigation menu"
-						aria-expanded={isOpen}
-						aria-controls="primary-navigation"
-						type="button"
+	return (
+		<>
+			{/* Hamburger always outside navbar for mobile */}
+			<button
+				className="hamburger"
+				onClick={() => setIsOpen((v) => !v)}
+				aria-label="Toggle navigation menu"
+				aria-expanded={isOpen}
+				aria-controls="primary-navigation"
+				type="button"
+			>
+				<div className={`hamburger-icon${isOpen ? " open" : ""}`}></div>
+			</button>
+
+			{/* Desktop Navbar */}
+			<header
+				className={`navbar${isScrolled ? " scrolled" : ""}`}
+				role="banner"
+			>
+				<div className="container">
+					<nav
+						className="navbar-nav"
+						id="primary-navigation"
+						aria-label="ניווט ראשי"
+						role="navigation"
 					>
-						<div className={`hamburger-icon ${isOpen ? "open" : ""}`}></div>
-					</button>
+						{navLinks.map((link) => (
+							<a
+								key={link.id}
+								className={`nav-link${
+									activeSection === link.id ? " active" : ""
+								}`}
+								href={`#${link.id}`}
+								tabIndex={0}
+								onClick={() => setIsOpen(false)}
+							>
+								{link.label}
+							</a>
+						))}
+					</nav>
 				</div>
+			</header>
+
+			{/* Mobile Menu rendered outside .navbar so it's not hidden by display:none */}
+			{isOpen && (
 				<nav
-					className={`navbar-nav ${isOpen ? "open" : ""}`}
+					className="navbar-nav open"
 					id="primary-navigation"
 					aria-label="ניווט ראשי"
+					role="navigation"
 				>
-					<a className="nav-link" href="#home" onClick={() => setIsOpen(false)}>
-						בית
-					</a>
-					<a
-						className="nav-link"
-						href="#carousel"
-						onClick={() => setIsOpen(false)}
-					>
-						מי אנחנו
-					</a>
-					<a
-						className="nav-link"
-						href="#gallery"
-						onClick={() => setIsOpen(false)}
-					>
-						גלריה
-					</a>
-					<a
-						className="nav-link"
-						href="#products"
-						onClick={() => setIsOpen(false)}
-					>
-						מוצרים
-					</a>
-					<a
-						className="nav-link"
-						href="#contact"
-						onClick={() => setIsOpen(false)}
-					>
-						צור קשר
-					</a>
+					{navLinks.map((link) => (
+						<a
+							key={link.id}
+							className={`nav-link${
+								activeSection === link.id ? " active" : ""
+							}`}
+							href={`#${link.id}`}
+							tabIndex={0}
+							onClick={() => setIsOpen(false)}
+						>
+							{link.label}
+						</a>
+					))}
 				</nav>
-			</div>
-		</header>
+			)}
+		</>
 	);
+	// ...existing code...
 }
