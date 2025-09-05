@@ -1,13 +1,18 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
-import { Inter } from "next/font/google";
+import { Heebo } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const heebo = Heebo({
+  subsets: ["hebrew", "latin"],
+  variable: "--font-ui",
+  weight: ["400", "500", "700", "800"],
+  display: "swap",
+});
 
 export default function RootLayout({ children }) {
   return (
     <html lang="he" dir="rtl">
-      <body className={`${inter.variable}`}>
+      <body className={`${heebo.variable}`}>
         <Navbar />
         <main className="page">{children}</main>
       </body>
