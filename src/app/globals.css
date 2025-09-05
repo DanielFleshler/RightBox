@@ -16,7 +16,7 @@
   --color-light-background: #f7f7f9;
   --hero-bg-position: 50% 50%;
   --hero-bg-position-mobile: 50% 25%;
-}
+/* removed extra closing brace to fix CSS syntax error */
 
 /*
   2. Base Styles & Global Utilities
@@ -273,6 +273,19 @@ a {
     min-height: 100dvh;
     padding-top: clamp(32px, 6vh, 80px);
     background-position: var(--hero-bg-position-mobile, 50% 25%);
+      position: relative;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 80px;
+      background: linear-gradient(180deg, rgba(51,53,58,0) 0%, var(--color-light-background) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
   }
 }
 
