@@ -1,3 +1,15 @@
+/*
+  Global CSS for "The Right Box"
+
+  This file combines and refines all previous styles,
+  removing redundancy and fixing conflicts. It's
+  organized into logical sections for clarity.
+*/
+
+/*
+  1. Global Variables & Fonts
+  - Define your custom color palette and typography here.
+*/
 :root {
   --font-ui: "Heebo", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
 
@@ -56,92 +68,71 @@ a {
 }
 
 /*
-  3. Typography
-  - Consistent headings and text styles.
+  3. Navbar
 */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-h1 { font-size: 3.5rem; font-weight: 800; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 2rem; }
-
-.section-title {
-  font-size: clamp(24px, 3.5vw, 36px);
-  font-weight: 800;
-  line-height: 1.15;
-  margin: 0 auto 12px auto; /* Centered with auto margins */
-  text-align: center;
-  color: inherit;
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 72px;
-  height: 4px;
-  border-radius: 999px;
-  margin: 8px auto 0;
-  background: linear-gradient(90deg, var(--color-accent-orange), var(--color-accent-sand));
-}
-
-.subtitle {
-  color: var(--color-muted-text);
-  margin-bottom: 1rem;
-}
-
-.text-accent-orange { color: var(--color-accent-orange); }
-.text-accent-sand { color: var(--color-accent-sand); }
-.text-muted-custom { color: var(--color-muted-text); }
-
-/*
-  4. Buttons & CTAs
-  - Reusable button styles.
-*/
-.btn {
-  font-weight: 600;
-  padding: 12px 24px;
-  border-radius: 8px;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 84px; /* Set a consistent height */
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  border: 2px solid;
-  text-decoration: none !important;
-  display: inline-block;
+  padding: 0;
 }
 
-.btn-primary {
-  background-color: var(--color-accent-orange);
-  border-color: var(--color-accent-orange);
-  color: white;
-}
-.btn-primary:hover {
-  background-color: #e66a15;
-  border-color: #e66a15;
-  transform: translateY(-2px);
+.navbar .container {
+    height: 100%; /* Make sure the container fills the navbar height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn-outline-primary {
-  background: transparent;
+.navbar-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--color-light-text);
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
   color: var(--color-accent-orange);
-  border-color: var(--color-accent-orange);
-}
-.btn-outline-primary:hover {
-  background-color: var(--color-accent-orange);
-  color: white;
   transform: translateY(-2px);
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 2px;
+  background: var(--color-accent-orange);
+  border-radius: 2px;
 }
 
 /*
-  5. Hero Section
-  - All hero-related styles in one place.
+  4. Hero Section
+  - Adjust the height to fit the screen and account for the navbar.
 */
-/* Hero section */
 .hero-section {
-  min-height: 100vh;
-  min-height: 100dvh;
-  background: var(--color-background-gray); 
+  min-height: calc(100dvh - 84px); /* Subtract the navbar's height */
+  background-color: var(--color-background-gray);
   display: flex;
   align-items: center;
   position: relative;
@@ -289,7 +280,9 @@ h3 { font-size: 2rem; }
   background: rgba(255, 122, 26, 0.08);
   transition: all 0.3s ease;
   text-decoration: none;
+  z-index: 100;
 }
+
 .hero-scroll:hover {
   background: rgba(255, 122, 26, 0.15);
   transform: translateX(-50%) translateY(-4px);
@@ -297,8 +290,7 @@ h3 { font-size: 2rem; }
 }
 
 /*
-  6. Carousel Section
-  - All "About Us" styles in one place.
+  5. Carousel Section
 */
 .section#carousel {
   background-color: var(--color-light-background);
@@ -369,7 +361,157 @@ h3 { font-size: 2rem; }
 }
 
 /*
-  7. Responsive Overrides
+  6. Typography
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.section-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 auto 12px auto;
+  text-align: center;
+  color: inherit;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  border-radius: 999px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, var(--color-accent-orange), var(--color-accent-sand));
+}
+
+.subtitle {
+  color: var(--color-muted-text);
+  margin-bottom: 1rem;
+}
+
+.text-muted-custom {
+  color: var(--color-muted-text);
+}
+
+/*
+  7. Buttons
+*/
+.btn {
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  text-decoration: none !important;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #e66a15;
+  border-color: #e66a15;
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-accent-orange);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/*
+  8. Other Components
+*/
+.card {
+  background-color: var(--color-warm-gray);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--color-accent-orange);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: #e66a15;
+  transform: translateY(-2px);
+}
+
+/*
+  9. Responsive Overrides
 */
 @media (max-width: 768px) {
   .hero-features {
