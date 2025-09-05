@@ -206,7 +206,14 @@ a {
 */
 .hero-section {
   min-height: calc(100dvh - 84px); /* Subtract the navbar's height */
+  /* Base color + background image (layered) */
   background-color: var(--color-background-gray);
+  background-image: url('./herosection_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Blend the image with the base color for better contrast */
+  background-blend-mode: multiply;
   display: flex;
   align-items: center;
   position: relative;
