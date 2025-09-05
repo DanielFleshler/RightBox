@@ -13,14 +13,20 @@ export default function Navbar() {
 		<header className="navbar">
 			<div className="container">
 				<div className="navbar-header">
+					<a className="nav-logo" href="#home">
+						<Image
+							src="/logo.svg"
+							alt="Right Box Logo"
+							width={100}
+							height={40}
+						/>
+					</a>
 					<button
 						className="hamburger"
 						onClick={toggleMenu}
 						aria-label="Toggle navigation menu"
 					>
-						<span className={`hamburger-icon ${isOpen ? "open" : ""}`}></span>
-						<span className={`hamburger-icon ${isOpen ? "open" : ""}`}></span>
-						<span className={`hamburger-icon ${isOpen ? "open" : ""}`}></span>
+						<div className={`hamburger-icon ${isOpen ? "open" : ""}`}></div>
 					</button>
 				</div>
 				<nav
