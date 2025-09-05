@@ -266,8 +266,8 @@ a {
   .navbar-header { 
     right: 0.75rem; 
   }
-  .section { 
-    scroll-margin-top: 56px; 
+  .section {
+    scroll-margin-top: 0;
   }
   .hero-section {
     min-height: 100dvh;
