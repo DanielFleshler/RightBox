@@ -73,7 +73,7 @@ a {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000;
   height: 84px; /* Set a consistent height */
   background-color: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(8px);
@@ -280,7 +280,7 @@ a {
   background: rgba(255, 122, 26, 0.08);
   transition: all 0.3s ease;
   text-decoration: none;
-  z-index: 100;
+  z-index: 1;
 }
 
 .hero-scroll:hover {
