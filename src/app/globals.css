@@ -70,10 +70,22 @@ a {
 /*
   3. Navbar
 */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 84px; /* Set a consistent height */
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
 .navbar .container {
-    height: 100%;
+    height: 100%; 
     display: flex;
-    justify-content: space-between; /* This ensures the logo and menu are on opposite sides */
+    justify-content: center;
     align-items: center;
 }
 
@@ -151,6 +163,12 @@ a {
 .nav-link:hover {
     color: var(--color-accent-orange);
     transform: translateY(-2px);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-accent-orange);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 .nav-link.active::after,
@@ -574,6 +592,8 @@ h3 {
     width: 44px;
     height: 44px;
   }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: block; /* Show hamburger on mobile */
@@ -611,5 +631,4 @@ h3 {
     .nav-link:last-child {
         border-bottom: none;
     }
-}
 }
