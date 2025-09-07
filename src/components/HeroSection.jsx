@@ -6,7 +6,7 @@ export default function HeroSection() {
 	return (
 		<section
 			id="home"
-			className="relative min-h-[100dvh] overflow-hidden bg-brandbg bg-cover bg-no-repeat bg-center flex items-center md:items-start pt-10 sm:pt-12 md:pt-12 text-textlight"
+			className="relative min-h-[100dvh] overflow-hidden bg-brandbg bg-cover bg-no-repeat bg-center flex items-start md:items-start pt-24 sm:pt-8 md:pt-12 text-textlight"
 			style={{
 				backgroundImage: `url(${heroBackgroundImage.src})`,
 			}}
