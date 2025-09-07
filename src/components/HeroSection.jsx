@@ -47,7 +47,7 @@ export default function HeroSection() {
 					{/* Feature 2: Full Customization */}
 					<div className="flex flex-row-reverse items-center gap-4 text-right">
 						<Settings
-							className="h-10 w-10 text-white flex-shrink-0"
+							className="h-10 w-10 text-accent flex-shrink-0"
 							aria-hidden
 						/>
 						<div>
