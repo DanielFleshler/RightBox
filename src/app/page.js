@@ -1,5 +1,5 @@
 import HeroSection from "../components/HeroSection";
-import CarouselSection from "../components/AboutUs";
+import AboutUs from "../components/AboutUs";
 import GallerySection from "../components/GallerySection";
 import ProductsSection from "../components/ProductsSection";
 import ContactSection from "../components/ContactSection";
@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <CarouselSection />
+      <AboutUs />
       <GallerySection />
       <ProductsSection />
       <ContactSection />

@@ -3,9 +3,9 @@ import Section from "./Section";
 
 export default function ContactSection() {
 	return (
-		<Section id="contact" className="bg-[#e9e9e9] text-darkslate">
+		<Section id="contact" className="bg-workshop text-textlight">
 			<div className="mx-auto max-w-4xl text-center">
-				<h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wide uppercase text-steel">
+				<h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wide uppercase text-textlight">
 					מוכנים להתחיל לבנות?
 				</h2>
 
@@ -18,7 +18,9 @@ export default function ContactSection() {
 						<span className="grid h-9 w-9 place-items-center rounded-md border border-accent/50 text-accent">
 							<Phone className="h-5 w-5" aria-hidden />
 						</span>
-						<span className="text-lg font-medium">כאן יבוא מספר פלאפון</span>
+						<span className="text-lg font-medium text-textlight/90">
+							050-0000000
+						</span>
 					</a>
 
 					{/* Email */}
@@ -29,7 +31,9 @@ export default function ContactSection() {
 						<span className="grid h-9 w-9 place-items-center rounded-md border border-accent/50 text-accent">
 							<Mail className="h-5 w-5" aria-hidden />
 						</span>
-						<span className="text-lg font-medium">כאן יבוא אימייל</span>
+						<span className="text-lg font-medium text-textlight/90">
+							example@example.com
+						</span>
 					</a>
 
 					{/* Location */}
@@ -37,17 +41,14 @@ export default function ContactSection() {
 						<span className="grid h-9 w-9 place-items-center rounded-md border border-accent/50 text-accent">
 							<MapPin className="h-5 w-5" aria-hidden />
 						</span>
-						<span className="text-lg font-medium">
-							כאן יבוא מיקום(נראלי זה היוגב 16)
+						<span className="text-lg font-medium text-textlight/90">
+							היוגב 16, חולון
 						</span>
 					</div>
 				</div>
 
 				<div className="mt-10">
-					<a
-						href="mailto:build@steelgrit.com"
-						className="inline-flex items-center justify-center rounded-xl bg-accent px-8 py-4 text-white font-extrabold uppercase tracking-wide shadow-md hover:bg-accent/90 transition-colors"
-					>
+					<a href="mailto:build@steelgrit.com" className="btn btn-primary">
 						בואו נבנה את הקופסה שלכם
 					</a>
 				</div>

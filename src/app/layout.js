@@ -2,6 +2,19 @@ import Navbar from "@/components/Navbar";
 import { Heebo } from "next/font/google";
 import "./globals.css";
 
+export const metadata = {
+    title: "הקופסה הנכונה – זיווד וציוד שטח מקצועי",
+    description:
+        "זיווד מקצועי לרכבי שטח, מגירות אחסון, מערכות כוח, מים ואוויר – מותאם אישית בישראל.",
+    openGraph: {
+        title: "הקופסה הנכונה – זיווד וציוד שטח מקצועי",
+        description:
+            "זיווד מקצועי לרכבי שטח, מגירות אחסון, מערכות כוח, מים ואוויר – מותאם אישית בישראל.",
+        locale: "he_IL",
+        type: "website",
+    },
+};
+
 const heebo = Heebo({
 	subsets: ["hebrew", "latin"],
 	variable: "--font-ui",

@@ -5,7 +5,7 @@ export default function AboutUs() {
 		<Section
 			id="carousel"
 			title="מי אנחנו?"
-			className="bg-white text-darkslate"
+			className="text-textlight"
 		>
 			<div className="mx-auto max-w-3xl space-y-6 text-right">
 				<p>
@@ -27,28 +27,28 @@ export default function AboutUs() {
 				</p>
 
 				<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-					<div className="rounded-xl border border-black/10 bg-warm p-4">
+					<div className="rounded-xl border border-steel/30 bg-white p-4">
 						<h4 className="font-semibold text-textlight">
 							<span className="text-accent">✓</span> נגרות שטח
 						</h4>
-						<p className="text-sm text-muted">
+						<p className="text-sm text-steel">
 							בניית מגירות אחסון מודולריות, זיווד מלא בעץ איכותי, ומטבחי שטח
 							מובנים.
 						</p>
 					</div>
-					<div className="rounded-xl border border-black/10 bg-warm p-4">
+					<div className="rounded-xl border border-steel/30 bg-white p-4">
 						<h4 className="font-semibold text-textlight">
 							<span className="text-accent">✓</span> מערכות כוח מתקדמות
 						</h4>
-						<p className="text-sm text-muted">
+						<p className="text-sm text-steel">
 							התקנת מצברים כפולים ומערכות חשמל מתקדמות כדי שלא תיתקעו לעולם.
 						</p>
 					</div>
-					<div className="rounded-xl border border-black/10 bg-warm p-4">
+					<div className="rounded-xl border border-steel/30 bg-white p-4">
 						<h4 className="font-semibold text-textlight">
 							<span className="text-accent">✓</span> פתרונות מים ואוויר
 						</h4>
-						<p className="text-sm text-muted">
+						<p className="text-sm text-steel">
 							שילוב מערכות מים מתקדמות ומערכות פנאומטיות (קומפרסורים) לניפוח לחץ
 							אוויר.
 						</p>

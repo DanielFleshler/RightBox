@@ -16,12 +16,22 @@
 # next.js
 /.next/
 /out/
+/.turbo/
 
 # production
 /build
 
 # misc
 .DS_Store
+Thumbs.db
+*.log
+*.iml
+.eslintcache
+.history/
+.cache/
+.vscode/
+.idea/
+/.swc/
 *.pem
 
 # debug
