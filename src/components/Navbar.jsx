@@ -1,6 +1,6 @@
 "use client";
 
-import { Settings, X } from "lucide-react";
+import { EllipsisVertical, X } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
@@ -88,7 +88,7 @@ export default function Navbar() {
 							aria-expanded={isOpen}
 						>
 							<div className="relative w-6 h-6">
-								<Settings
+								<EllipsisVertical
 									className={`h-6 w-6 absolute transition-all duration-300 ${
 										isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
 									}`}
