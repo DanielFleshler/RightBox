@@ -17,12 +17,17 @@ export default function Navbar() {
 
 	const accent = "var(--color-accent)";
 
-	const handleGoto = (href) => {
-		setActiveTab(href);
-		setIsOpen(false);
-		const el = document.querySelector(href);
-		if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-	};
+    const handleGoto = (href) => {
+        setActiveTab(href);
+        setIsOpen(false);
+        if (href === "#home") {
+            // Scroll to absolute top, not just the #home anchor
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            return;
+        }
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
 
 	return (
 		<nav
