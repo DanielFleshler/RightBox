@@ -73,7 +73,7 @@ export default function Navbar() {
 				},
 				{
 					root: null,
-					rootMargin: "-35% 0px -55% 0px",
+					rootMargin: "-15% 0px -70% 0px",
 					threshold: 0.2,
 				}
 			);
