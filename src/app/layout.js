@@ -12,12 +12,12 @@ const heebo = Heebo({
 export default function RootLayout({ children }) {
 	return (
 		<html lang="he" dir="rtl">
-			<body
-				className={`${heebo.variable} font-[var(--font-ui)] bg-brandbg text-textlight antialiased`}
-			>
-				<Navbar />
-				<main className="pt-16">{children}</main>
-			</body>
+            <body
+                className={`${heebo.variable} font-[var(--font-ui)] bg-brandbg text-textlight antialiased`}
+            >
+                <Navbar />
+                <main className="pt-16 bg-workshop/0">{children}</main>
+            </body>
 		</html>
 	);
 }

@@ -1,4 +1,4 @@
-import heroBackgroundImage from "@/app/herosection_background.png";
+import heroBackgroundImage from "@/app/hero_background.jpg";
 import { ChevronDown, HelpingHand, Settings, ShieldCheck } from "lucide-react";
 import React from "react";
 
@@ -16,13 +16,13 @@ export default function HeroSection() {
 			<div className="container relative z-10 mx-auto w-full px-4 flex flex-col items-center justify-center">
 				<div className="mx-auto flex max-w-3xl flex-col items-center gap-6 md:gap-8 text-center">
 					<div>
-						<h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#eaecef] leading-tight">
+						<h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#e2e8f0] leading-tight uppercase [text-shadow:0_2px_0_rgba(0,0,0,0.35)]">
 							הקופסה <span className="text-accent">הנכונה</span>
 						</h1>
 						<div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-accent to-sand" />
 					</div>
 
-					<p className="max-w-[50ch] text-base sm:text-lg md:text-xl text-white/90 font-medium">
+					<p className="max-w-[50ch] text-base sm:text-lg md:text-xl text-white font-medium">
 						ציוד פרימיום לחובבי שטח שמבקשים אמינות, עמידות ונוחות — מותאם לכל
 						תנאי השטח בישראל.
 					</p>
@@ -72,10 +72,9 @@ export default function HeroSection() {
 						</div>
 					</div>
 				</div>
-				<div></div>
 				<a
 					href="#carousel"
-					className="absolute bottom-[-180px] left-1/2 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full border border-white/20 bg-accent/10 text-textlight transition-transform hover:-translate-y-1 animate-bounce"
+					className="mt-10 md:mt-12 grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-accent/10 text-textlight transition-transform hover:-translate-y-1 animate-bounce"
 					aria-label="גלול למטה אל החלק הבא"
 				>
 					<ChevronDown className="h-7 w-7" strokeWidth={2} aria-hidden />
