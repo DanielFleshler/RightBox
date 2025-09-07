@@ -1,9 +1,13 @@
 import Section from "./Section";
 
-export default function CarouselSection() {
+export default function AboutUs() {
 	return (
-		<Section id="carousel" title="מי אנחנו?">
-			<div className="about-text">
+		<Section
+			id="carousel"
+			title="מי אנחנו?"
+			className="bg-white text-darkslate"
+		>
+			<div className="mx-auto max-w-3xl space-y-6 text-right">
 				<p>
 					ברוכים הבאים ל"קופסה הנכונה" – אנחנו לא רק בונים זיווד לרכבי שטח,
 					אנחנו יוצרים את החופש שלכם לטייל. אופל לוי, איש מקצוע עם ניסיון עשיר,
@@ -12,7 +16,7 @@ export default function CarouselSection() {
 					ומאובזר בדיוק לפי צרכי הלקוח.
 				</p>
 
-				<h3 className="section-subtitle">
+				<h3 className="text-2xl font-bold text-center">
 					המקצוענות שלנו – הפרטים הקטנים שעושים את ההבדל
 				</h3>
 				<p>
@@ -22,29 +26,29 @@ export default function CarouselSection() {
 					כמו שלא עשיתם מעולם.
 				</p>
 
-				<div className="features-container">
-					<div className="feature-card">
-						<h4>
-							<span className="bullet-point">✓</span> נגרות שטח
+				<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+					<div className="rounded-xl border border-black/10 bg-warm p-4">
+						<h4 className="font-semibold text-textlight">
+							<span className="text-accent">✓</span> נגרות שטח
 						</h4>
-						<p>
+						<p className="text-sm text-muted">
 							בניית מגירות אחסון מודולריות, זיווד מלא בעץ איכותי, ומטבחי שטח
 							מובנים.
 						</p>
 					</div>
-					<div className="feature-card">
-						<h4>
-							<span className="bullet-point">✓</span> מערכות כוח מתקדמות
+					<div className="rounded-xl border border-black/10 bg-warm p-4">
+						<h4 className="font-semibold text-textlight">
+							<span className="text-accent">✓</span> מערכות כוח מתקדמות
 						</h4>
-						<p>
+						<p className="text-sm text-muted">
 							התקנת מצברים כפולים ומערכות חשמל מתקדמות כדי שלא תיתקעו לעולם.
 						</p>
 					</div>
-					<div className="feature-card">
-						<h4>
-							<span className="bullet-point">✓</span> פתרונות מים ואוויר
+					<div className="rounded-xl border border-black/10 bg-warm p-4">
+						<h4 className="font-semibold text-textlight">
+							<span className="text-accent">✓</span> פתרונות מים ואוויר
 						</h4>
-						<p>
+						<p className="text-sm text-muted">
 							שילוב מערכות מים מתקדמות ומערכות פנאומטיות (קומפרסורים) לניפוח לחץ
 							אוויר.
 						</p>
@@ -52,7 +56,7 @@ export default function CarouselSection() {
 				</div>
 
 				<p>
-					לצד המקצועיות של אופל, הקופסה הנכונה גאה בשותפות עם **ארז 4x4**, אחד
+					לצד המקצועיות של אופל, הקופסה הנכונה גאה בשותפות עם ארז 4x4, אחד
 					ממוסכי הג'יפים המובילים והמוכרים בישראל. שיתוף הפעולה הזה מבטיח לכם
 					שילוב של מומחיות מכנית לצד פתרונות זיווד ברמה הגבוהה ביותר.
 				</p>
