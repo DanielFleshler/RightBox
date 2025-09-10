@@ -57,6 +57,15 @@
 
   .overlay-dark { background-color: color-mix(in srgb, var(--color-darkslate) 35%, transparent); }
   .overlay-light { background-color: color-mix(in srgb, #ffffff 55%, transparent); }
+
+  /* Themed dark-to-transparent overlay for media */
+  .overlay-gradient-dark {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-darkslate) 55%, transparent),
+      transparent
+    );
+  }
 }
 
 /* Reusable components (buttons, headings, links) */
@@ -83,4 +92,44 @@
   }
 
   .heading-stamp { text-shadow: 0 2px 0 color-mix(in srgb, var(--color-darkslate) 35%, transparent); }
+
+  /* Carousel controls & dots for visual consistency */
+  .carousel-control {
+    display: grid;
+    place-items: center;
+    padding: 0.75rem;
+    border-radius: var(--radius-xl);
+    color: #fff; /* arrow */
+    background-color: rgba(0, 0, 0, 0.45); /* transparent black */
+    transition: all .2s ease;
+    opacity: 1; /* always visible */
+    box-shadow: var(--shadow-xl);
+    border: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .group:hover .carousel-control, .carousel-control:focus { opacity: 1; }
+  .carousel-control:hover { background-color: rgba(0, 0, 0, 0.6); }
+  .carousel-control:focus,
+  .carousel-control:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-xl); /* remove green focus ring */
+  }
+  .carousel-control:active {
+    background-color: rgba(0, 0, 0, 0.45); /* no active flash */
+    transform: none;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .carousel-dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 9999px;
+    background-color: color-mix(in srgb, #ffffff 70%, transparent);
+    transition: all .2s ease;
+    outline: none;
+  }
+  .carousel-dot:hover { background-color: #ffffff; transform: scale(1.1); }
+  .carousel-dot:focus { box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 60%, transparent); }
+  .carousel-dot--active { background-color: var(--color-accent); }
 }
