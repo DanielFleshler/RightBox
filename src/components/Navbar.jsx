@@ -1,6 +1,6 @@
 "use client";
 
-import { EllipsisVertical, X } from "lucide-react";
+import { ChevronRight, EllipsisVertical, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -8,7 +8,6 @@ const navItems = [
 	{ name: "מי אנחנו", href: "#carousel" },
 	{ name: "גלריה", href: "#gallery" },
 	{ name: "מוצרים", href: "#products" },
-	{ name: "צור קשר", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -22,7 +21,6 @@ export default function Navbar() {
 		setIsOpen(false);
 		if (href === "#home") {
 			window.scrollTo({ top: 0, behavior: "smooth" });
-			// Clear hash from URL
 			if (window.history && window.history.replaceState) {
 				window.history.replaceState(null, "", window.location.pathname);
 			}
@@ -32,7 +30,6 @@ export default function Navbar() {
 		if (el) {
 			el.scrollIntoView({ behavior: "smooth", block: "start" });
 		}
-		// Clear hash from URL after scrolling
 		if (window.history && window.history.replaceState) {
 			window.history.replaceState(null, "", window.location.pathname);
 		}
@@ -47,8 +44,14 @@ export default function Navbar() {
 			let best = { id: "#home", overlap: -Infinity };
 			sections.forEach((sec) => {
 				const rect = sec.getBoundingClientRect();
-				const inside = viewportCenter >= rect.top && viewportCenter <= rect.bottom;
-				const overlap = inside ? rect.bottom - rect.top : -Math.abs(viewportCenter - Math.max(Math.min(viewportCenter, rect.bottom), rect.top));
+				const inside =
+					viewportCenter >= rect.top && viewportCenter <= rect.bottom;
+				const overlap = inside
+					? rect.bottom - rect.top
+					: -Math.abs(
+							viewportCenter -
+								Math.max(Math.min(viewportCenter, rect.bottom), rect.top)
+					  );
 				if (overlap > best.overlap) best = { id: `#${sec.id}`, overlap };
 			});
 			return best.id;
@@ -60,7 +63,6 @@ export default function Navbar() {
 				.filter(Boolean);
 			if (sections.length === 0) return () => {};
 
-			// IntersectionObserver for primary tracking
 			const observer = new IntersectionObserver(
 				(entries) => {
 					const visible = entries
@@ -91,12 +93,13 @@ export default function Navbar() {
 				});
 			};
 			window.addEventListener("scroll", onScroll, { passive: true });
-
-			// Initial state
 			const initial = getCurrentByViewportCenter();
 			setActiveTab(initial);
-			// Clear initial hash if present
-			if (window.location.hash && window.history && window.history.replaceState) {
+			if (
+				window.location.hash &&
+				window.history &&
+				window.history.replaceState
+			) {
 				window.history.replaceState(null, "", window.location.pathname);
 			}
 
@@ -106,7 +109,6 @@ export default function Navbar() {
 			};
 		};
 
-		// Defer setup to next frame to ensure DOM is ready
 		let cleanup = () => {};
 		const raf = requestAnimationFrame(() => {
 			cleanup = setup();
@@ -118,92 +120,111 @@ export default function Navbar() {
 	}, []);
 
 	return (
-		<nav className="fixed top-0 left-0 right-0 z-50 shadow-lg backdrop-blur-sm bg-white/80 text-textlight border-b border-steel/20">
-
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-				<div className="flex items-center h-16">
-					{/* Desktop */}
-					<div
-						className="hidden md:flex space-x-8 w-full justify-center"
-						dir="rtl"
-					>
-						{navItems.map((item, index) => {
-							const isActive = activeTab === item.href;
-							return (
-								<button
-									key={item.href}
-									onClick={() => handleGoto(item.href)}
-									className={`px-6 py-2 text-sm font-medium transition-all duration-500 ease-out relative group hover:scale-105 ${
-										isActive ? "bg-accent/20" : "bg-transparent"
-									}`}
-									style={{
-										animationDelay: `${index * 100}ms`,
-										animation: "slideInDown 0.6s ease-out forwards",
-									}}
-								>
-									{item.name}
-									<span
-										className="absolute bottom-0 left-0 h-0.5 transition-all duration-500 ease-out bg-accent"
-										style={{ width: isActive ? "100%" : "0%", opacity: isActive ? 1 : 0 }}
-									/>
-									<span
-										className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 bg-accent/15"
-									/>
-								</button>
-							);
-						})}
-					</div>
-
-					{/* Mobile toggle */}
-					<div className="md:hidden ml-auto">
-						<button
-							onClick={() => setIsOpen(!isOpen)}
-							className="p-2 rounded-md transition-all duration-300 hover:rotate-90 text-textlight"
-							aria-label="Toggle menu"
-							aria-expanded={isOpen}
-						>
-							<div className="relative w-6 h-6">
-								<EllipsisVertical
-									className={`h-6 w-6 absolute transition-all duration-300 ${
-										isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
-									}`}
-								/>
-								<X
-									className={`h-6 w-6 absolute transition-all duration-300 ${
-										isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-									}`}
-								/>
-							</div>
-						</button>
-					</div>
+		<header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 border-b border-steel/20 text-textlight">
+			<nav
+				className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+				dir="rtl"
+			>
+				{/* Brand */}
+				<div className="flex items-center gap-3">
+					<span className="font-black tracking-tight text-xl">
+						הקופסה <span className="text-accent">הנכונה</span>
+					</span>
 				</div>
 
-				{/* Mobile menu */}
-				<div
-					className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
-						isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-					}`}
-				>
-					<div className="px-2 pt-2 pb-3 space-y-1 border-t border-steel/20 bg-white/80" dir="rtl">
-						{navItems.map((item, index) => {
-							const isActive = activeTab === item.href;
-							return (
+				{/* Desktop nav */}
+				<ul className="hidden md:flex items-center gap-2 text-sm">
+					{navItems.map((item) => {
+						const isActive = activeTab === item.href;
+						return (
+							<li key={item.href}>
 								<button
-									key={item.href}
 									onClick={() => handleGoto(item.href)}
-									className={`block w-full text-right px-3 py-2 text-base font-medium transition-all duration-300 rounded-md hover:translate-x-2 ${
-										isActive ? "bg-accent/25" : "bg-transparent"
+									className={`relative inline-flex items-center px-4 py-2 rounded-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] hover:bg-accent/10 ${
+										isActive ? "bg-accent/15" : ""
 									}`}
-									style={{
-										animationDelay: `${index * 50}ms`,
-										animation: isOpen ? "slideInLeft 0.4s ease-out forwards" : "none",
-									}}
 								>
 									{item.name}
 								</button>
-							);
-						})}
-					</div>
+							</li>
+						);
+					})}
+					<li>
+						<a
+							href="https://wa.me/972542516165"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="ml-1 inline-flex items-center gap-2 rounded-xl px-4 py-2 font-semibold bg-[var(--color-accent)] text-white shadow hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+						>
+							דברו איתנו
+							<ChevronRight className="w-4 h-4" aria-hidden />
+						</a>
+					</li>
+				</ul>
+
+				{/* Mobile toggle */}
+				<div className="md:hidden">
+					<button
+						onClick={() => setIsOpen(!isOpen)}
+						className="rounded-lg p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+						aria-label="פתח תפריט"
+						aria-expanded={isOpen}
+					>
+						<div className="relative w-6 h-6">
+							<EllipsisVertical
+								className={`h-6 w-6 absolute transition-all duration-300 ${
+									isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+								}`}
+							/>
+							<X
+								className={`h-6 w-6 absolute transition-all duration-300 ${
+									isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+								}`}
+							/>
+						</div>
+					</button>
+				</div>
+			</nav>
+
+			{/* Mobile menu */}
+			<div
+				className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
+					isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+				}`}
+			>
+				<div
+					className="px-4 pt-2 pb-3 space-y-1 border-t border-steel/20 bg-white/80"
+					dir="rtl"
+				>
+					{navItems.map((item, index) => {
+						const isActive = activeTab === item.href;
+						return (
+							<button
+								key={item.href}
+								onClick={() => handleGoto(item.href)}
+								className={`block w-full text-right px-3 py-2 text-base font-medium transition-all duration-300 rounded-md hover:bg-accent/10 ${
+									isActive ? "bg-accent/15" : "bg-transparent"
+								}`}
+								style={{
+									animationDelay: `${index * 50}ms`,
+									animation: isOpen
+										? "slideInLeft 0.4s ease-out forwards"
+										: "none",
+								}}
+							>
+								{item.name}
+							</button>
+						);
+					})}
+					<a
+						href="https://wa.me/972542516165"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center gap-2 rounded-xl px-4 py-2 font-semibold bg-[var(--color-accent)] text-white shadow hover:brightness-95"
+					>
+						דברו איתנו
+						<ChevronRight className="w-4 h-4" aria-hidden />
+					</a>
 				</div>
 			</div>
 
@@ -229,6 +250,6 @@ export default function Navbar() {
 					}
 				}
 			`}</style>
-		</nav>
+		</header>
 	);
 }

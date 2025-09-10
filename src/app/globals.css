@@ -37,35 +37,19 @@
 
 /* Clean surfaces and components */
 @layer utilities {
-  /* Workshop background (subtle clean gradient) */
-  .bg-workshop {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, #ffffff 92%, transparent) 0%,
-      color-mix(in srgb, #e2e8f0 85%, transparent) 100%
-    );
-  }
-
-  /* Steel plate (clean, light) */
-  .plate {
-    position: relative;
-    background: linear-gradient(180deg, #ffffff, color-mix(in srgb, #ffffff 85%, #f1f5f9));
-    border: 1px solid color-mix(in srgb, var(--color-steel) 25%, transparent);
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-darkslate) 10%, transparent);
-    overflow: hidden;
-  }
-
   .overlay-dark { background-color: color-mix(in srgb, var(--color-darkslate) 35%, transparent); }
   .overlay-light { background-color: color-mix(in srgb, #ffffff 55%, transparent); }
 
-  /* Themed dark-to-transparent overlay for media */
-  .overlay-gradient-dark {
-    background: linear-gradient(
-      to top,
-      color-mix(in srgb, var(--color-darkslate) 55%, transparent),
-      transparent
-    );
+  /* Glass chip for captions */
+  .glass {
+    background: color-mix(in srgb, #ffffff 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-steel) 30%, transparent);
+    backdrop-filter: blur(8px) saturate(120%);
   }
+
+  /* Hide scrollbars for aesthetic thumbnail strip */
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
 }
 
 /* Reusable components (buttons, headings, links) */
@@ -84,6 +68,12 @@
   }
   .btn-primary { background: var(--color-accent); color: var(--color-textlight); }
   .btn-primary:hover { filter: brightness(0.95); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 2px solid color-mix(in srgb, var(--color-accent) 75%, transparent);
+  }
+  .btn-secondary:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
 
   .heading-xl {
     font-weight: 900;
@@ -116,10 +106,10 @@
   .carousel-control:focus,
   .carousel-control:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-xl); /* remove green focus ring */
+    box-shadow: var(--shadow-xl); 
   }
   .carousel-control:active {
-    background-color: rgba(0, 0, 0, 0.45); /* no active flash */
+    background-color: rgba(0, 0, 0, 0.45); 
     transform: none;
     box-shadow: var(--shadow-xl);
   }
@@ -135,4 +125,24 @@
   .carousel-dot:hover { background-color: #ffffff; transform: scale(1.1); }
   .carousel-dot:focus { box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 60%, transparent); }
   .carousel-dot--active { background-color: var(--color-accent); }
+
+  /* Thumbnail buttons */
+  .thumb {
+    width: 64px; height: 44px; border-radius: 8px; overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-steel) 35%, transparent);
+    box-shadow: 0 6px 12px color-mix(in srgb, var(--color-darkslate) 10%, transparent);
+    transition: transform .2s ease, border-color .2s ease;
+    outline: none; background: #fff;
+  }
+  .thumb:hover { transform: translateY(-2px); }
+  .thumb:focus { box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 60%, transparent); }
+  .thumb--active { border-color: var(--color-accent); }
+
+  /* Progress */
+  .progress-track {
+    height: 6px; border-radius: 9999px; overflow: hidden;
+    background: color-mix(in srgb, #ffffff 65%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-steel) 30%, transparent);
+  }
+  .progress-bar { height: 100%; background: var(--color-accent); }
 }

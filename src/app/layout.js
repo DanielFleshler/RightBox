@@ -6,6 +6,9 @@ export const metadata = {
     title: "הקופסה הנכונה – זיווד וציוד שטח מקצועי",
     description:
         "זיווד מקצועי לרכבי שטח, מגירות אחסון, מערכות כוח, מים ואוויר – מותאם אישית בישראל.",
+    icons: {
+        icon: "/favicon.svg",
+    },
     openGraph: {
         title: "הקופסה הנכונה – זיווד וציוד שטח מקצועי",
         description:
@@ -29,7 +32,7 @@ export default function RootLayout({ children }) {
                 className={`${heebo.variable} font-[var(--font-ui)] bg-brandbg text-textlight antialiased`}
             >
                 <Navbar />
-                <main className="pt-16 bg-workshop/0">{children}</main>
+                <main className="pt-0 bg-workshop/0">{children}</main>
             </body>
 		</html>
 	);
