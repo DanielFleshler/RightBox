@@ -5,16 +5,14 @@ import { useEffect, useState } from "react";
 
 const navItems = [
 	{ name: "בית", href: "#home" },
-	{ name: "מי אנחנו", href: "#carousel" },
-	{ name: "גלריה", href: "#gallery" },
+	{ name: "מי אנחנו", href: "#aboutus" },
+	{ name: "גלריה", href: "#slideshow" },
 	{ name: "מוצרים", href: "#products" },
 ];
 
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [activeTab, setActiveTab] = useState("#home");
-
-	const accent = "var(--color-accent)";
 
 	const handleGoto = (href) => {
 		setActiveTab(href);
@@ -63,6 +61,7 @@ export default function Navbar() {
 				.filter(Boolean);
 			if (sections.length === 0) return () => {};
 
+			const isSmall = window.matchMedia("(max-width: 767px)").matches;
 			const observer = new IntersectionObserver(
 				(entries) => {
 					const visible = entries
@@ -75,7 +74,7 @@ export default function Navbar() {
 				},
 				{
 					root: null,
-					rootMargin: "-15% 0px -70% 0px",
+					rootMargin: isSmall ? "-30% 0px -60% 0px" : "-15% 0px -70% 0px",
 					threshold: 0.2,
 				}
 			);

@@ -7,7 +7,7 @@ export default function HeroSection() {
 	return (
 		<section
 			id="home"
-			className="relative isolate overflow-hidden text-textlight min-h-[100svh] sm:min-h-[100svh]"
+			className="relative isolate overflow-hidden text-textlight min-h-[100svh] sm:min-h-[100svh] "
 		>
 			{/* Background image and soft wash */}
 			<div

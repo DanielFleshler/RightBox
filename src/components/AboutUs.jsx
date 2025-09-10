@@ -3,9 +3,9 @@ import Section from "./Section";
 export default function AboutUs() {
 	return (
 		<Section
-			id="carousel"
+			id="aboutus"
 			title="מי אנחנו?"
-			className="text-textlight"
+			className="text-textlight sm:scroll-mt-0 md:scroll-mt-0 lg:scroll-mt-0 xl:scroll-mt-0"
 		>
 			<div className="mx-auto max-w-3xl space-y-6 text-right">
 				<p>

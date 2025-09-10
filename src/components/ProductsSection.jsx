@@ -20,7 +20,7 @@ const products = [
 
 export default function ProductsSection() {
   return (
-    <Section id="products" title="מוצרים" className="text-textlight">
+    <Section id="products" title="מוצרים" className="text-textlight lg:scroll-mt-0 xl:scroll-mt-0">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {products.map((p) => (
           <div key={p.name} className="plate rounded-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-xl bg-white">

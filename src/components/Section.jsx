@@ -1,9 +1,9 @@
 export default function Section({ id, title, className = "", children }) {
 	return (
-		<section id={id} className={`py-24 ${className}`.trim()}>
+		<section id={id} className={`py-24 sm:py-24 ${className}`.trim()}>
 			<div className="container mx-auto px-4">
 				{title ? (
-					<div className="mb-8 text-center">
+					<div className="mb-5 sm:mb-8 text-center">
 						<h2 className="mx-auto text-3xl sm:text-4xl font-extrabold leading-[var(--leading-tight)] tracking-tight heading-xl">
 							{title}
 						</h2>
