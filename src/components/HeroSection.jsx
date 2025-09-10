@@ -7,7 +7,7 @@ export default function HeroSection() {
 	return (
 		<section
 			id="home"
-			className="relative min-h-[100dvh] overflow-hidden bg-brandbg bg-cover bg-no-repeat bg-center flex items-start md:items-start pt-24 sm:pt-8 md:pt-12 text-textlight"
+			className="relative min-h-[100svh] overflow-hidden bg-brandbg bg-cover bg-no-repeat bg-center flex items-start md:items-start pt-24 sm:pt-8 md:pt-12 text-textlight"
 			style={{
 				backgroundImage: `url(${heroBackgroundImage.src})`,
 			}}
@@ -68,7 +68,9 @@ export default function HeroSection() {
 							aria-hidden
 						/>
 						<div>
-							<div className="font-bold text-lg text-textlight">תמיכה מקצועית</div>
+							<div className="font-bold text-lg text-textlight">
+								תמיכה מקצועית
+							</div>
 							<div className="text-sm text-steel">ליווי והתקנה בשטח</div>
 						</div>
 					</div>
