@@ -19,7 +19,7 @@ export default function ContactSection() {
 							<Phone className="h-5 w-5" aria-hidden />
 						</span>
 						<span className="text-lg font-medium text-textlight/90">
-							050-0000000
+							054-2516165
 						</span>
 					</a>
 
@@ -32,7 +32,7 @@ export default function ContactSection() {
 							<Mail className="h-5 w-5" aria-hidden />
 						</span>
 						<span className="text-lg font-medium text-textlight/90">
-							example@example.com
+							TheRightBox@gmail.com
 						</span>
 					</a>
 
@@ -48,7 +48,12 @@ export default function ContactSection() {
 				</div>
 
 				<div className="mt-10">
-					<a href="mailto:build@steelgrit.com" className="btn btn-primary">
+					<a
+						href="https://wa.me/972542516165"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="btn btn-primary"
+					>
 						בואו נבנה את הקופסה שלכם
 					</a>
 				</div>
