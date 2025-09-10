@@ -1,6 +1,6 @@
 export default function Section({ id, title, className = "", children }) {
 	return (
-		<section id={id} className={`py-20 ${className}`.trim()}>
+		<section id={id} className={`py-24 ${className}`.trim()}>
 			<div className="container mx-auto px-4">
 				{title ? (
 					<div className="mb-8 text-center">
