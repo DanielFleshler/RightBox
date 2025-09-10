@@ -101,7 +101,7 @@
     border-radius: var(--radius-xl);
     color: #fff; /* arrow */
     background-color: rgba(0, 0, 0, 0.45); /* transparent black */
-    transition: all .2s ease;
+    transition: all 0.2s ease;
     opacity: 1; /* always visible */
     box-shadow: var(--shadow-xl);
     border: none;
@@ -109,7 +109,10 @@
     -webkit-tap-highlight-color: transparent;
   }
   .group:hover .carousel-control, .carousel-control:focus { opacity: 1; }
-  .carousel-control:hover { background-color: rgba(0, 0, 0, 0.6); }
+  .carousel-control:hover { 
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+  }
   .carousel-control:focus,
   .carousel-control:focus-visible {
     outline: none;
@@ -126,7 +129,7 @@
     height: 0.65rem;
     border-radius: 9999px;
     background-color: color-mix(in srgb, #ffffff 70%, transparent);
-    transition: all .2s ease;
+    transition: all 0.2s ease;
     outline: none;
   }
   .carousel-dot:hover { background-color: #ffffff; transform: scale(1.1); }

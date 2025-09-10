@@ -1,7 +1,6 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import Section from "./Section";
 
 const galleryImages = [
 	{ src: "/images/gallery/gallery-1.JPG", alt: "image 1" },
@@ -29,32 +28,32 @@ export default function GallerySection() {
 	};
 
 	return (
-		<Section id="gallery" className="text-textlight">
-			<div className="max-w-4xl mx-auto">
+		<section id="gallery" className="py-24 text-textlight">
+			<div className="w-full">
 				<div
-					className="relative aspect-[16/10] bg-gray-100 rounded-xl overflow-hidden shadow-xl"
+					className="relative aspect-[21/9] bg-gray-100 overflow-hidden shadow-xl"
 					tabIndex={0}
 					role="region"
-					aria-label="גלריית פרויקטים"
+					aria-label="Project Gallery"
 				>
-					{/* Images */}
-					<div className="relative w-full h-full">
-						{galleryImages.map((image, index) => (
+					<div
+						className="absolute inset-0 flex transition-transform duration-500 ease-in-out"
+						style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+					>
+						{galleryImages.map((image) => (
 							<img
 								key={image.src}
 								src={image.src}
 								alt={image.alt}
-								className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-									index === currentIndex ? "opacity-100" : "opacity-0"
-								}`}
-								loading={index === 0 ? "eager" : "lazy"}
+								className="w-full h-full object-cover flex-shrink-0"
+								loading="lazy"
 							/>
 						))}
 					</div>
 					<button
 						onClick={goToPrev}
 						className="carousel-control absolute left-4 top-1/2 -translate-y-1/2"
-						aria-label="תמונה קודמת"
+						aria-label="Previous image"
 					>
 						<ChevronLeft className="w-5 h-5" />
 					</button>
@@ -62,7 +61,7 @@ export default function GallerySection() {
 					<button
 						onClick={goToNext}
 						className="carousel-control absolute right-4 top-1/2 -translate-y-1/2"
-						aria-label="תמונה הבאה"
+						aria-label="Next image"
 					>
 						<ChevronRight className="w-5 h-5" />
 					</button>
@@ -76,13 +75,13 @@ export default function GallerySection() {
 								className={`carousel-dot ${
 									index === currentIndex ? "carousel-dot--active" : ""
 								}`}
-								aria-label={`עבור לתמונה ${index + 1}`}
+								aria-label={`Go to image ${index + 1}`}
 								aria-current={index === currentIndex}
 							/>
 						))}
 					</div>
 				</div>
 			</div>
-		</Section>
+		</section>
 	);
 }
